@@ -8,5 +8,9 @@
 
 int _putchar(char c)
 {
+	if (c == '\0')
+	{
+		return;
+	}
 	return (write(1, &c, 1));
 }
