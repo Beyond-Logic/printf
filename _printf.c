@@ -13,7 +13,9 @@ int _printf(const char *format, ...)
 {
 	va_list parameters;
 
-	int count = 0, i, num, digits = 0, temp, divisor;
+	int count = 0, i;
+
+	char buffer[1024];
 
 	va_start(parameters, format);
 
@@ -44,56 +46,28 @@ int _printf(const char *format, ...)
 					break;
 				case 'd':
 				case 'i':
-				{
-					num = va_arg(parameters, int);
-
-					if (num < 0)
+					sprintf(buffer, "%d", va_arg(parameters, int));
+					for (i = 0; buffer[i] != '\0'; i++)
 					{
-						_putchar('_');
+						_putchar(buffer[i]);
 						count++;
-						num = -num;
 					}
-
-					temp = num;
-
-					while (temp > 0)
-					{
-						temp /= 10;
-						digits++;
-					}
-
-					while (digits > 0)
-					{
-						divisor = 1;
-
-						for (i = 1; i < digits; i++)
-						{
-							divisor *= 10;
-						}
-
-						_putchar(num / divisor + '0');
-						count++;
-						num %= divisor;
-						digits--;
-					}
-
 					break;
-				}
 				default:
 					_putchar('%');
-					_putchar(*(format + 1));
-					count += 2;
+					count++;
 					break;
+
 			}
-			format++;
+
+			format += 2;
 		}
 		else
 		{
 			_putchar(*format);
 			count++;
+			format++;
 		}
-
-		format++;
 	}
 
 	va_end(parameters);
