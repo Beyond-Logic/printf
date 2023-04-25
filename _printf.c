@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 
 /**
@@ -12,9 +13,9 @@ int _printf(const char *format, ...)
 {
 	va_list parameters;
 
-	int count = 0;
+	int count = 0, i;
 
-	int i = 0;
+	char buffer[1024];
 
 	va_start(parameters, format);
 
@@ -44,29 +45,29 @@ int _printf(const char *format, ...)
 					count++;
 					break;
 				case 'd':
-					_putchar(va_arg(parameters, int));
-					count++;
-					break;
 				case 'i':
-					_putchar(va_arg(parameters, int));
-					count++;
+					sprintf(buffer, "%d", va_arg(parameters, int));
+					for (i = 0; buffer[i] != '\0'; i++)
+					{
+						_putchar(buffer[i]);
+						count++;
+					}
 					break;
 				default:
 					_putchar('%');
-					_putchar(*(format + 1));
-					count += 2;
+					count++;
 					break;
 
 			}
 
-			format++;
+			format += 2;
 		}
 		else
 		{
 			_putchar(*format);
 			count++;
+			format++;
 		}
-		format++;
 	}
 
 	va_end(parameters);
