@@ -8,9 +8,15 @@
 
 int _putchar(char c)
 {
+	int count = 0;
+
 	if (c == '\0')
 	{
-		return (0);
+		return (count);
 	}
-	return (write(1, &c, 1));
+	write(1, &c, 1);
+
+	count++;
+
+	return (count);
 }
