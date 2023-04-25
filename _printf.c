@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 				{
 					char *str = va_arg(parameters, char *);
 
-					for (j = 0; str[i] != '\0'; i++)
+					for (j = 0; str[j] != '\0'; j++)
 					{
 						_putchar(str[j]);
 						count++;
@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 					sprintf(buffer, "%d", va_arg(parameters, int));
 					for (j = 0; buffer[j] != '\0'; j++)
 					{
-						_putchar(buffer[i]);
+						_putchar(buffer[j]);
 						count++;
 					}
 					break;
