@@ -13,41 +13,37 @@ int _printf(const char *format, ...)
 {
 	va_list parameters;
 
-	int count = 0, i;
+	int count = 0, i, j;
 
 	char buffer[1024];
 
 	va_start(parameters, format);
 
-	while (*format != '\0')
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (*format == '%')
-		{
-			switch (*(format + 1))
+		if (format[i] == '%')
+		{	i++;
+			switch (format[i])
 			{
 				case 'c':
-					_putchar(va_arg(parameters, int));
+					_putchar((char)va_arg(parameters, int));
 					count++;
 					break;
 				case 's':
 				{
 					char *str = va_arg(parameters, char *);
 
-					for (i = 0; str[i] != '\0'; i++)
+					for (j = 0; str[i] != '\0'; i++)
 					{
-						_putchar(str[i]);
+						_putchar(str[j]);
 						count++;
 					}
-					break;
 				}
-				case '%':
-					_putchar('%');
-					count++;
 					break;
 				case 'd':
 				case 'i':
 					sprintf(buffer, "%d", va_arg(parameters, int));
-					for (i = 0; buffer[i] != '\0'; i++)
+					for (j = 0; buffer[j] != '\0'; j++)
 					{
 						_putchar(buffer[i]);
 						count++;
@@ -55,18 +51,16 @@ int _printf(const char *format, ...)
 					break;
 				default:
 					_putchar('%');
-					count++;
+					_putchar(format[i]);
+					count += 2;
 					break;
 
 			}
-
-			format += 2;
 		}
 		else
 		{
-			_putchar(*format);
+			_putchar(format[i]);
 			count++;
-			format++;
 		}
 	}
 
