@@ -107,6 +107,14 @@ int _printf(const char *format, ...)
 						count++;
 					}
 					break;
+				case 'p':
+					sprintf(buffer, "%p", va_arg(parameters, void *));
+					for (j = 0; buffer[j] != '\0'; j++)
+					{
+						_putchar(buffer[j]);
+						count++;
+					}
+					break;
 				default:
 					_putchar('%');
 					_putchar(format[i]);
