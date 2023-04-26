@@ -13,11 +13,7 @@ int _printf(const char *format, ...)
 {
 	va_list parameters;
 
-	int count = 0, i, j, k = 0;
-
-	unsigned int num;
-
-	int binary[32];
+	int count = 0, i, j;
 
 	char buffer[1024];
 
@@ -40,26 +36,7 @@ int _printf(const char *format, ...)
 					count += print_integer(parameters);
 					break;
 				case 'b':
-					{
-						num = va_arg(parameters, unsigned int);
-						if (num == 0)
-						{
-							_putchar('0');
-							count++;
-							break;
-						}
-
-						while (num > 0)
-						{
-							binary[k++] = num % 2;
-							num /= 2;
-						}
-						for ( j = k - 1; j >= 0; j--)
-						{
-							_putchar(binary[j] + '0');
-							count++;
-						}
-					}
+					count += print_binary(parameters);
 					break;
 				case 'u':
 					sprintf(buffer, "%u", va_arg(parameters, int));
