@@ -37,12 +37,7 @@ int _printf(const char *format, ...)
 					break;
 				case 'd':
 				case 'i':
-					sprintf(buffer, "%d", va_arg(parameters, int));
-					for (j = 0; buffer[j] != '\0'; j++)
-					{
-						_putchar(buffer[j]);
-						count++;
-					}
+					count += print_integer(parameters);
 					break;
 				case 'b':
 					{
