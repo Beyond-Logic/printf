@@ -39,20 +39,10 @@ int _printf(const char *format, ...)
 					count += print_binary(parameters);
 					break;
 				case 'u':
-					sprintf(buffer, "%u", va_arg(parameters, int));
-					for (j = 0; buffer[j] != '\0'; j++)
-					{
-						_putchar(buffer[j]);
-						count++;
-					}
+					count += print_unsigned_integer(parameters);
 					break;
 				case 'o':
-					sprintf(buffer, "%o", va_arg(parameters, int));
-					for (j = 0; buffer[j] != '\0'; j++)
-					{
-						_putchar(buffer[j]);
-						count++;
-					}
+					count += print_octal(parameters);
 					break;
 				case 'x':
 					sprintf(buffer, "%x", va_arg(parameters, int));
