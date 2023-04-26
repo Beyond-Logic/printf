@@ -33,15 +33,7 @@ int _printf(const char *format, ...)
 					count += print_char(parameters);
 					break;
 				case 's':
-				{
-					char *str = va_arg(parameters, char *);
-
-					for (j = 0; str[j] != '\0'; j++)
-					{
-						_putchar(str[j]);
-						count++;
-					}
-				}
+					count += print_string(parameters);
 					break;
 				case 'd':
 				case 'i':
