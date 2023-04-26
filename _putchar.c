@@ -8,7 +8,7 @@
 
 int _putchar(char c)
 {
-	static int count = 0;
+	static int count;
 
 	if (c == '\0')
 	{
