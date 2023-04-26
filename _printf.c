@@ -49,6 +49,38 @@ int _printf(const char *format, ...)
 						count++;
 					}
 					break;
+				case 'u':
+					sprintf(buffer, "%u", va_arg(parameters, int));
+					for (j = 0; buffer[j] != '\0'; j++)
+					{
+						_putchar(buffer[j]);
+						count++;
+					}
+					break;
+				case 'o':
+					sprintf(buffer, "%o", va_arg(parameters, int));
+					for (j = 0; buffer[j] != '\0'; j++)
+					{
+						_putchar(buffer[j]);
+						count++;
+					}
+					break;
+				case 'x':
+					sprintf(buffer, "%x", va_arg(parameters, int));
+					for (j = 0; buffer[j] != '\0'; j++)
+					{
+						_putchar(buffer[j]);
+						count++;
+					}
+					break;
+				case 'X':
+					sprintf(buffer, "%X", va_arg(parameters, int));
+					for (j = 0; buffer[j] != '\0'; j++)
+					{
+						_putchar(buffer[j]);
+						count++;
+					}
+					break;
 				default:
 					_putchar('%');
 					_putchar(format[i]);
