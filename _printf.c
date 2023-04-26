@@ -45,20 +45,10 @@ int _printf(const char *format, ...)
 					count += print_octal(parameters);
 					break;
 				case 'x':
-					sprintf(buffer, "%x", va_arg(parameters, int));
-					for (j = 0; buffer[j] != '\0'; j++)
-					{
-						_putchar(buffer[j]);
-						count++;
-					}
+					count += print_hexadecimal(parameters);
 					break;
 				case 'X':
-					sprintf(buffer, "%X", va_arg(parameters, int));
-					for (j = 0; buffer[j] != '\0'; j++)
-					{
-						_putchar(buffer[j]);
-						count++;
-					}
+					count += print_hexadecimal_upper(parameters);
 					break;
 				case 'p':
 					sprintf(buffer, "%p", va_arg(parameters, void *));

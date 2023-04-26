@@ -9,5 +9,7 @@ int print_integer(va_list parameters);
 int print_binary(va_list parameters);
 int print_unsigned_integer(va_list parameters);
 int print_octal(va_list parameters);
+int print_hexadecimal(va_list parameters);
+int print_hexadecimal_upper(va_list parameters);
 
 #endif /* MAIN_H */
